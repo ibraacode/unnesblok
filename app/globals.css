@@ -14,22 +14,28 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
+
   body {
     background-color: var(--color-brand-dark);
     color: #ffffff;
     overflow-x: hidden;
   }
+
   ::selection {
     background: var(--color-brand-yellow);
     color: #000;
   }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
+
   ::-webkit-scrollbar-track {
     background: #13151c;
   }
+
   ::-webkit-scrollbar-thumb {
     background: #ffcc00;
     border-radius: 8px;
@@ -38,64 +44,130 @@
 }
 
 @layer utilities {
+  /* ===== FONT ONLY (no shadow) ===== */
   .font-stumble {
     font-family: "Fredoka One", "Montserrat", cursive, sans-serif;
     letter-spacing: 0.05em;
-    text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000,
-      -2px 2px 0px #000, 0px 4px 0px rgba(0, 0, 0, 0.5);
-  }
-
-  .font-stumble-sm {
-    font-family: "Fredoka One", "Montserrat", cursive, sans-serif;
-    letter-spacing: 0.03em;
-    text-shadow: 1.5px 1.5px 0px #000, -1.5px -1.5px 0px #000,
-      1.5px -1.5px 0px #000, -1.5px 1.5px 0px #000;
+    font-weight: 400;
   }
 
   .font-body {
     font-family: "Montserrat", system-ui, sans-serif;
   }
 
+  /* ===== SHADOW ===== */
+  .shadow-stumble {
+    text-shadow:
+      2px 2px 0 #000,
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      0 4px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .shadow-stumble-sm {
+    text-shadow:
+      1px 1px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000;
+  }
+
+  .shadow-stumble-dark {
+    text-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.35);
+  }
+
+  /* ===== 3D BUTTONS ===== */
   .btn-3d {
-    box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.6),
-      inset 0 -4px 0 rgba(0, 0, 0, 0.4), 0 6px 0 #000,
+    box-shadow:
+      inset 0 3px 0 rgba(255, 255, 255, 0.6),
+      inset 0 -4px 0 rgba(0, 0, 0, 0.4),
+      0 6px 0 #000,
       0 10px 15px rgba(0, 0, 0, 0.4);
     transition: all 0.08s ease-in-out;
   }
+
   .btn-3d:active {
     transform: translateY(4px);
-    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.4),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.4), 0 2px 0 #000,
+    box-shadow:
+      inset 0 2px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.4),
+      0 2px 0 #000,
       0 4px 6px rgba(0, 0, 0, 0.4);
   }
 
   .btn-3d-yellow {
     background: linear-gradient(to bottom, #ffde00 0%, #ff9900 100%);
   }
+
   .btn-3d-blue {
     background: linear-gradient(to bottom, #4d9aff 0%, #1e5fd9 100%);
   }
+
   .btn-3d-green {
     background: linear-gradient(to bottom, #6ee779 0%, #22a63a 100%);
   }
+
   .btn-3d-purple {
     background: linear-gradient(to bottom, #b878ff 0%, #7a29d9 100%);
   }
+
   .btn-3d-red {
     background: linear-gradient(to bottom, #ff5c5c 0%, #cc0000 100%);
   }
 
+  /* ===== NAV LINK ===== */
   .nav-link {
-    text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000,
-      -1px 1px 0px #000;
+    text-shadow:
+      1px 1px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000;
   }
 
-  .text-shadow-hard {
-    text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000,
-      -2px 2px 0px #000, 0px 4px 0px rgba(0, 0, 0, 0.5);
+  /* ===== LOGO ===== */
+  .logo-yellow {
+    filter:
+      brightness(0) saturate(100%)
+      invert(78%) sepia(80%)
+      saturate(1200%) hue-rotate(357deg)
+      brightness(102%) contrast(102%)
+      drop-shadow(0 2px 0 #000);
   }
 
-  .text-shadow-soft {
-    text-shadow: 1px 1px 0px #000;
+  .logo-white {
+    filter: brightness(0) invert(1) drop-shadow(0 2px 0 #000);
+  }
+
+  /* ===== CHEVRON PATTERN ===== */
+  .animated-chevron-bg {
+    --s: 56px;
+    --g: 10px;
+    --c: #ebaf00;
+
+    --_l: #0000 calc(33% - 0.866 * var(--g)),
+      var(--c) calc(33.2% - 0.866 * var(--g)) 33%,
+      #0000 34%;
+
+    background:
+      repeating-linear-gradient(
+          var(--c) 0 var(--g),
+          #0000 0 50%
+        )
+        0 calc(0.866 * var(--s) - var(--g) / 2),
+      conic-gradient(from -150deg at var(--g) 50%, var(--c) 120deg, #0000 0),
+      linear-gradient(-120deg, var(--_l)),
+      linear-gradient(-60deg, var(--_l)),
+      #ffcc00;
+
+    background-size: var(--s) calc(3.466 * var(--s));
+    animation: chevronRight 2s linear infinite;
+  }
+}
+
+/* Keyframes di LUAR @layer */
+@keyframes chevronRight {
+  to {
+    background-position-x: calc(-1 * var(--s));
   }
 }

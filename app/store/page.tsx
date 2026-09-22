@@ -63,7 +63,7 @@ export default function StorePage() {
   return (
     <div className="min-h-screen bg-brand-dark text-white">
       <Navbar />
-      <main className="pt-12 md:pt-16 pb-20 px-4">
+      <main className="pt-[72px] pb-20 px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12 md:mb-16">
